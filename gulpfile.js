@@ -1,6 +1,8 @@
 var gulp = require('gulp'),
     $    = require('gulp-load-plugins')();
 
+var jasmine = require('gulp-jasmine-phantom');
+
 gulp.task('server', function() {
   gulp.src('.')
     .pipe($.webserver({
@@ -23,5 +25,15 @@ gulp.task('build', function() {
 gulp.task('watch', ['build'], function(){
   gulp.watch('./src/textToJson.js', ['build']);
 });
+
+gulp.task('test-jasmine', function() {
+    return gulp.src('spec/test.js')
+        .pipe(jasmine({
+            integration: true,
+            keepRunner: true,
+            vendor: ['lib/textToJson.js']
+        }));
+});
+
 
 gulp.task('default', ['server', 'watch']);
