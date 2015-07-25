@@ -1,3 +1,5 @@
+var TextToJson = require('../lib/textToJson.js');
+
 describe('textToJson', function(){
 
     it('Simple text', function(){
@@ -14,12 +16,13 @@ describe('textToJson', function(){
             .toBe(
             [
                 'Lorem Ipsum.',
-                '"It is a long.',
+                'It is a long.',
                 'There are many variations.'
             ]
         );
     });
 
 });
+
 
 
